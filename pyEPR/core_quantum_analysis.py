@@ -664,10 +664,10 @@ class QuantumAnalysis(object):
             PJ_cap = PJ_cap[:, junctions]
 
         if modes is not None:
-            PJ = PJ[modes, :]
-            SJ = SJ[modes, :]
-            Om = Om[modes, :][:, modes]
-            PHI_zpf = PHI_zpf[modes, :]
+            PJ = PJ[np.arange(len(modes)), :]
+            SJ = SJ[np.arange(len(modes)), :]
+            Om = Om[np.arange(len(modes)), :][:, np.arange(len(modes))]
+            PHI_zpf = PHI_zpf[np.arange(len(modes)), :]
             PJ_cap = PJ_cap[:, junctions]
 
         # Analytic 4-th order
