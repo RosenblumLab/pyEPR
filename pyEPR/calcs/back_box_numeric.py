@@ -222,7 +222,8 @@ def make_dispersive(H, fock_trunc, fzpfs=None, f0s=None, chi_prime=False,
     else:
         def closest_state_to(s):
             def distance(s2):
-                return (s.dag() * s2[1]).norm()
+                # return (s.dag() * s2[1]).norm()
+                return np.abs((s.dag() * s2[1]))
             return max(zip(evals, evecs), key=distance)
 
     f1s = [closest_state_to(fock_state_on({i: 1}))[0] for i in range(N)]
