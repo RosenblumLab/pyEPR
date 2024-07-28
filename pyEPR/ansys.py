@@ -713,7 +713,7 @@ class HfssDesign(COMWrapper):
 
         if self.solution_type == "Eigenmode":
             return HfssEMSetup(self, name)
-        elif self.solution_type == "DrivenModal":
+        elif self.solution_type == "DrivenModal" or self.solution_type == 'HFSS Modal Network':
             return HfssDMSetup(self, name)
         elif self.solution_type == "DrivenTerminal":
             return HfssDTSetup(self, name)
@@ -3011,7 +3011,7 @@ class CalcObject(COMWrapper):
     def __rmul__(self, other):
         return self * other
 
-    def __div__(self, other):
+    def __truediv__(self, other):
         return self._bin_op(other, "/")
 
     def __rdiv__(self, other):
